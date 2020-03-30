@@ -19,6 +19,12 @@ public class NotesServiceImplTest {
         notesService = NotesServiceImpl.createWith(notesStorage);
     }
 
+    @AfterEach
+    public void tearDown() {
+        notesService = null;
+        notesStorage = null;
+    }
+
     @Test
     public void givenValidRecordShouldBeAddedToList() {
         Note note = Note.of("a", 3.5f);
@@ -61,10 +67,6 @@ public class NotesServiceImplTest {
                 .hasMessage("Imię ucznia nie może być puste");
     }
 
-    @AfterEach
-    public void tearDown() {
-        notesService = null;
-        notesStorage = null;
-    }
+
 
 }
